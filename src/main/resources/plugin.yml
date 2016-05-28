@@ -1,0 +1,9 @@
+name: aRename
+version: 1.0
+main: uk.co.proxying.aRename.Arename
+prefix: aRename
+authors: [Proxying]
+description: aRename is a plugin that adds a rename items into the game
+commands:
+    rgive:
+        description: Rename item give command.

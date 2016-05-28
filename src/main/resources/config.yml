@@ -1,0 +1,34 @@
+settings:
+    aRename-item-id: 421
+    aRename-item-metadata: 0
+    aRename-item-name: '&caRenamer'
+    aRename-item-lore:
+        - '&bItem Renaming Tool'
+        - '&4Drag ontop of another item to rename it'
+    aRename-item-nbt-identifier: 'aRenamer'
+    aRename-give-command-permission: 'arcadian.command.rgive'
+
+messages:
+    error-cannot-rename-item: '&cYou cannot rename this item'
+    error-already-renaming-item: '&cYou are already renaming an item, please finish before attempting to rename another'
+    error-attempted-blacklist-rename: '&cThis item is blacklisted and cannot be renamed'
+    error-give-command-permission-fail: '&cYou do not have the ability to use this command'
+    error-give-command-player-offline: '&cThat player is not online'
+    error-give-command-wrong-arguments: '&cIncorrect arguments, try /rgive {name} {amount}'
+    completion-give-command-inventory-full-message: '&aYou have been give %amount% renaming items, but your inventory is full. They have been dropped at your feet'
+    completion-give-command-inventory-full-title: '&a+%amount% renaming items'
+    completion-give-command-inventory-full-subtitle: '&aPick them up'
+    completion-give-command-message: '&aYou have been given %amount% renaming items'
+    completion-give-command-title: '&a +%amount% renaming items'
+    completion-give-command-subtitle: '&aCongratulations'
+    completion-give-command-sender-success: '&a%player% has been given %amount% renaming items'
+    completion-rename-cancelled: '&aYou have cancelled the renaming of your item, and have been refunded'
+    completion-rename-disallowed: '&cThat is not a suitable item name'
+    completion-rename-success: '&aYou have successfully renamed your item to %itemname%'
+    anvil-rename-prompt: 'Enter name here'
+
+blacklist:
+    item-rename-blacklist:
+        - 421
+        - 50
+        - 33
