@@ -22,10 +22,11 @@ import uk.co.proxying.aRename.anvilGui.nms.anvil.AnvilGUIInterface;
 import uk.co.proxying.aRename.anvilGui.nms.anvil.AnvilSlot;
 
 import java.util.HashMap;
+import java.util.Map;
 
 class AnvilGUI implements AnvilGUIInterface {
     private Player player;
-    private HashMap<AnvilSlot, ItemStack> items = new HashMap<>();
+    private Map<AnvilSlot, ItemStack> items = new HashMap<>();
     private Inventory inv;
     private Listener listener;
 
