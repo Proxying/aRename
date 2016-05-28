@@ -34,8 +34,8 @@ public class CoreListener implements Listener {
         if (!(CoreUtilities.isRenameItem(cursor))) return;
         ItemStack clickedItem = event.getCurrentItem();
         Player player = (Player) event.getWhoClicked();
-        if (CoreUtilities.isItemBlacklisted(clickedItem)) {
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', new Config<String>("messages.error-attempted-blacklist-rename").getValue()));
+        if (!CoreUtilities.isItemWhitelisted(clickedItem)) {
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', new Config<String>("messages.error-attempted-non-whitelist-rename").getValue()));
             return;
         }
         if (CoreUtilities.isRenameItem(clickedItem)) {
@@ -108,7 +108,7 @@ public class CoreListener implements Listener {
         if (event.getInventory().getType() == InventoryType.ANVIL) {
             if (Arename.getInstance().getPlayersRenaming().contains(event.getPlayer().getName())) {
                 Arename.getInstance().getPlayersRenaming().remove(event.getPlayer().getName());
-                event.getPlayer().getInventory().addItem(CoreUtilities.createRenamingItem(1));
+                event.getPlayer().getInventory().addItem(CoreUtilities.createRenamingItem());
                 event.getPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', new Config<String>("messages.completion-rename-cancelled").getValue()));
             }
         }

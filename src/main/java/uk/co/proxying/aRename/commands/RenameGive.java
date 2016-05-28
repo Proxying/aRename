@@ -7,6 +7,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import uk.co.proxying.aRename.utils.Config;
 import uk.co.proxying.aRename.utils.CoreUtilities;
 
@@ -40,14 +41,16 @@ public class RenameGive implements CommandExecutor {
                 return true;
             }
             Player player = Bukkit.getPlayer(strings[0]);
+            ItemStack itemToGive = CoreUtilities.createRenamingItem();
+            itemToGive.setAmount(amount);
             if (player.getInventory().firstEmpty() == -1) {
-                player.getWorld().dropItemNaturally(player.getLocation(), CoreUtilities.createRenamingItem(amount));
+                player.getWorld().dropItemNaturally(player.getLocation(), itemToGive);
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', new Config<String>("messages.completion-give-command-inventory-full-message").getValue().replace("%amount%", String.valueOf(amount))));
                 player.sendTitle(ChatColor.translateAlternateColorCodes('&', new Config<String>("messages.completion-give-command-inventory-full-title").getValue().replace("%amount%", String.valueOf(amount))), ChatColor.translateAlternateColorCodes('&', new Config<String>("messages.completion-give-command-inventory-full-subtitle").getValue().replace("%amount%", String.valueOf(amount))));
                 commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', new Config<String>("messages.completion-give-command-sender-success").getValue().replace("%player%", player.getName()).replace("%amount%", String.valueOf(amount))));
                 return true;
             } else {
-                player.getInventory().addItem(CoreUtilities.createRenamingItem(amount));
+                player.getInventory().addItem(itemToGive);
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', new Config<String>("messages.completion-give-command-message").getValue().replace("%amount%", String.valueOf(amount))));
                 player.sendTitle(ChatColor.translateAlternateColorCodes('&', new Config<String>("messages.completion-give-command-title").getValue().replace("%amount%", String.valueOf(amount))), ChatColor.translateAlternateColorCodes('&', new Config<String>("messages.completion-give-command-subtitle").getValue().replace("%amount%", String.valueOf(amount))));
                 commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', new Config<String>("messages.completion-give-command-sender-success").getValue().replace("%player%", player.getName()).replace("%amount%", String.valueOf(amount))));

@@ -11,7 +11,7 @@ settings:
 messages:
     error-cannot-rename-item: '&cYou cannot rename this item'
     error-already-renaming-item: '&cYou are already renaming an item, please finish before attempting to rename another'
-    error-attempted-blacklist-rename: '&cThis item is blacklisted and cannot be renamed'
+    error-attempted-non-whitelist-rename: '&cThis item cannot be renamed'
     error-give-command-permission-fail: '&cYou do not have the ability to use this command'
     error-give-command-player-offline: '&cThat player is not online'
     error-give-command-wrong-arguments: '&cIncorrect arguments, try /rgive {name} {amount}'
@@ -27,8 +27,8 @@ messages:
     completion-rename-success: '&aYou have successfully renamed your item to %itemname%'
     anvil-rename-prompt: 'Enter name here'
 
-blacklist:
-    item-rename-blacklist:
+whitelist:
+    item-rename-whitelist:
         - 421
         - 50
         - 33

@@ -26,10 +26,10 @@ public class CoreUtilities {
         return false;
     }
 
-    public static boolean isItemBlacklisted(ItemStack itemStack) {
+    public static boolean isItemWhitelisted(ItemStack itemStack) {
         int itemID = itemStack.getType().getId();
-        for (int blackListedID : new Config<List<Integer>>("blacklist.item-rename-blacklist").getValue()) {
-            if (itemID == blackListedID) {
+        for (int whitelistItems : new Config<List<Integer>>("whitelist.item-rename-whitelist").getValue()) {
+            if (itemID == whitelistItems) {
                 return true;
             }
         }
@@ -44,14 +44,14 @@ public class CoreUtilities {
         return itemStack;
     }
 
-    public static ItemStack createRenamingItem(int amount) {
+    public static ItemStack createRenamingItem() {
         ItemStack itemStack;
         int itemMeta;
         if (new Config<Integer>("settings.aRename-item-metadata").getValue() != 0) {
             itemMeta = new Config<Integer>("settings.aRename-item-metadata").getValue();
-            itemStack = new ItemStack(Material.getMaterial(new Config<Integer>("settings.aRename-item-id").getValue()), amount, (short) itemMeta);
+            itemStack = new ItemStack(Material.getMaterial(new Config<Integer>("settings.aRename-item-id").getValue()), 1, (short) itemMeta);
         } else {
-            itemStack = new ItemStack(Material.getMaterial(new Config<Integer>("settings.aRename-item-id").getValue()), amount);
+            itemStack = new ItemStack(Material.getMaterial(new Config<Integer>("settings.aRename-item-id").getValue()), 1);
         }
         itemStack = CoreUtilities.editItem(itemStack, ChatColor.translateAlternateColorCodes('&', new Config<String>("settings.aRename-item-name").getValue()));
         ItemMeta meta = itemStack.getItemMeta();
