@@ -1,6 +1,3 @@
-/*
- * Decompiled with CFR 0_114.
- */
 package uk.co.proxying.aRename.anvilGui.nms.anvil;
 
 public enum AnvilSlot {
