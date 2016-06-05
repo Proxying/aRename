@@ -54,7 +54,6 @@ public final class Arename extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        saveConfig();
     }
 
     public String getPackageVersion() {

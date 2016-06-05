@@ -46,6 +46,12 @@ public class CoreListener implements Listener {
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', new Config<String>("messages.error-already-renaming-item").getValue()));
             return;
         }
+        if (clickedItem.getType() == Material.NAME_TAG) {
+            if (clickedItem.getAmount() > 1) {
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', new Config<String>("messages.error-cannot-rename-item").getValue()));
+                return;
+            }
+        }
         event.setCancelled(true);
         event.setCursor(new ItemStack(Material.AIR));
         ItemStack newStack = cursor.clone();
